@@ -27,13 +27,15 @@ jobs:
           gradle-version: 8.7
 
       - name: Generate Gradle wrapper
+        working-directory: McstructureImporter
         run: gradle wrapper --gradle-version 8.7
 
       - name: Build debug APK
+        working-directory: McstructureImporter
         run: ./gradlew assembleDebug --stacktrace
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: mcstructure-importer-debug
-          path: app/build/outputs/apk/debug/app-debug.apk
+          path: McstructureImporter/app/build/outputs/apk/debug/app-debug.apk
